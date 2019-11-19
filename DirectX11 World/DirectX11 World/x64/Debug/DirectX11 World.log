@@ -1,0 +1,10 @@
+﻿  PCH.cpp
+  DirectX11.cpp
+C:\Users\Now2_210_07\source\repos\DirectX11 World\DirectX11 World\DirectX11.cpp(31,6): warning C4101: 'error' :참조되지 않은 지역 변수입니다.
+  Entry.cpp
+C:\Users\Now2_210_07\source\repos\DirectX11 World\DirectX11 World\DirectX11.cpp(28,52): warning C4101: 'stringLength' :참조되지 않은 지역 변수입니다.
+  Graphics.cpp
+  System.cpp
+  코드를 생성하고 있습니다...
+C:\Users\Now2_210_07\source\repos\DirectX11 World\DirectX11 World\Entry.cpp(7,7): warning C4101: 'result' :참조되지 않은 지역 변수입니다.
+  DirectX11 World.vcxproj -> C:\Users\Now2_210_07\source\repos\DirectX11 World\x64\Debug\DirectX11 World.exe
