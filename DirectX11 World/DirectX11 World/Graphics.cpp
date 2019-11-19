@@ -24,11 +24,20 @@ bool Graphics::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidth, int s
 		return false;
 	}
 
-	return true;
-}
+	model = new Model();
+	result = model->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), L"data/cube.txt", L"data/stone01.tga");
+	if (!result)
+		return false;
 
-bool Graphics::LoadModels(HWND hwnd)
-{
+	m_texShader = new TextureShader();
+	result = m_texShader->Initialize(m_D3D->GetDevice(), hwnd);
+	if (!result)
+		return false;
+
+	m_Camera = new Camera();
+	m_Camera->SetPosition(0, 0, -10);
+	//m_Camera->SetRotation(30, 0, 0);
+
 	return true;
 }
 
@@ -56,16 +65,27 @@ bool Graphics::Frame(float frameTime)
 bool Graphics::Update(float frameTime)
 {
 	//Scene Update
+	m_Camera->Translate(0, 0.001, 0);
+
+
 
 	return true;
 }
 
 bool Graphics::Render(float frameTime)
 {
-	m_D3D->BeginScene(1.0f, 1.0f, 0.7f, 1.0f);
+	XMMATRIX viewMatrix, worldMatrix , projectionMatrix;
+	bool result;
 
-	//Scene Render
+	m_Camera->Render();
+	m_Camera->GetViewMatrix(viewMatrix);
+	m_D3D->GetProjectionMatrix(projectionMatrix);
+	m_D3D->GetWorldMatrix(worldMatrix);
 
+	m_D3D->BeginScene(1.0f, 1.0f, 0.0f, 1.0f);
+
+	model->Render(frameTime);
+	m_texShader->Render(m_D3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, model->GetTexture()->GetTextureView());
 
 	m_D3D->EndScene();
 

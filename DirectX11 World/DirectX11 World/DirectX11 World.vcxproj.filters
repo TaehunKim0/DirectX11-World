@@ -3,47 +3,123 @@
   <ItemGroup>
     <ClCompile Include="Entry.cpp" />
     <ClCompile Include="Graphics.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>EngineFrame\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="DirectX11.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>EngineFrame\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="PCH.cpp">
-      <Filter>Util</Filter>
+      <Filter>EngineFrame\Util</Filter>
     </ClCompile>
     <ClCompile Include="System.cpp">
-      <Filter>System</Filter>
+      <Filter>EngineFrame\System</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
-      <Filter>System</Filter>
+      <Filter>EngineFrame\System</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>EngineFrame\Object\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>EngineFrame\Object\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>EngineFrame\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>EngineFrame\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>EngineFrame\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShader.cpp">
+      <Filter>EngineFrame\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics.h">
-      <Filter>Graphics</Filter>
+      <Filter>EngineFrame\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="DirectX11.h">
-      <Filter>Graphics</Filter>
+      <Filter>EngineFrame\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="PCH.h">
-      <Filter>Util</Filter>
+      <Filter>EngineFrame\Util</Filter>
     </ClInclude>
     <ClInclude Include="System.h">
-      <Filter>System</Filter>
+      <Filter>EngineFrame\System</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
-      <Filter>System</Filter>
+      <Filter>EngineFrame\System</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>EngineFrame\Object\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>EngineFrame\Object\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDef.h">
+      <Filter>EngineFrame\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>EngineFrame\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>EngineFrame\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>EngineFrame\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShader.h">
+      <Filter>EngineFrame\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Graphics">
-      <UniqueIdentifier>{b2de8f27-55ba-4c30-af9d-9806cb0c9081}</UniqueIdentifier>
+    <Filter Include="Game">
+      <UniqueIdentifier>{ef7bbedd-34a5-4401-b160-2cc07c81233e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Util">
-      <UniqueIdentifier>{969249f5-eae2-4b57-ba7d-85add8db7f6a}</UniqueIdentifier>
+    <Filter Include="EngineFrame">
+      <UniqueIdentifier>{b618ae56-a8cb-4b56-8277-997305a409a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="System">
+    <Filter Include="EngineFrame\System">
       <UniqueIdentifier>{5630306f-11ea-4b32-ba51-c47c7c8fd995}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EngineFrame\Util">
+      <UniqueIdentifier>{969249f5-eae2-4b57-ba7d-85add8db7f6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFrame\Graphics">
+      <UniqueIdentifier>{b2de8f27-55ba-4c30-af9d-9806cb0c9081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFrame\Object">
+      <UniqueIdentifier>{7a50a7b2-9161-41f5-9ef4-327933c55d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFrame\Object\Scene">
+      <UniqueIdentifier>{cefb4fe4-61cd-45cf-8b33-abe1d4108569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFrame\Models">
+      <UniqueIdentifier>{fa453e89-5a6c-4e9a-9961-14f3e7906b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFrame\Shader">
+      <UniqueIdentifier>{9682fea1-a470-414d-8005-08b43e1e1cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFrame\Shader\ShaderFile">
+      <UniqueIdentifier>{329094a3-af3d-42f8-a7f5-9d29398a8d86}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="texture.vs">
+      <Filter>EngineFrame\Shader\ShaderFile</Filter>
+    </None>
+    <None Include="texture.ps">
+      <Filter>EngineFrame\Shader\ShaderFile</Filter>
+    </None>
   </ItemGroup>
 </Project>

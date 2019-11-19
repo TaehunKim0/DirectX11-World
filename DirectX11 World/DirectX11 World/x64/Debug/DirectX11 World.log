@@ -1,6 +1,4 @@
-﻿  Entry.cpp
-  System.cpp
-  Timer.cpp
-  코드를 생성하고 있습니다...
-C:\Users\taehun\Documents\GitHub\DirectX11-World\DirectX11 World\DirectX11 World\Entry.cpp(7,7): warning C4101:  'result' :참조되지 않은 지역 변수입니다.
+﻿  Graphics.cpp
+C:\Users\taehun\Documents\GitHub\DirectX11-World\DirectX11 World\DirectX11 World\Graphics.cpp(68,33): warning C4305:  '인수': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\taehun\Documents\GitHub\DirectX11-World\DirectX11 World\DirectX11 World\Graphics.cpp(78,7): warning C4101:  'result' :참조되지 않은 지역 변수입니다.
   DirectX11 World.vcxproj -> C:\Users\taehun\Documents\GitHub\DirectX11-World\DirectX11 World\x64\Debug\DirectX11 World.exe

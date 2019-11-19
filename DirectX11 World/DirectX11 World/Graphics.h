@@ -1,6 +1,9 @@
 #pragma once
 
 #include "DirectX11.h"
+#include "Model.h"
+#include "TextureShader.h"
+#include "Camera.h"
 
 const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
@@ -13,7 +16,6 @@ public:
 	~Graphics();
 
 	bool Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidth, int screenHeight , bool windowed);
-	bool LoadModels(HWND hwnd);
 	void Shutdown();
 	bool Frame(float frameTime);
 
@@ -23,4 +25,7 @@ private:
 
 private:
 	DirectX11* m_D3D;
+	Model* model;
+	TextureShader* m_texShader;
+	Camera* m_Camera;
 };

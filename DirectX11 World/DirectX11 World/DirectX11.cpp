@@ -4,8 +4,8 @@
 DirectX11::DirectX11()
 {
 	m_SwapChain = 0;
-	m_Device = 0;
-	m_DeviceContext = 0;
+	m_Device = nullptr;
+	m_DeviceContext = nullptr;
 	m_RenderTargetView = 0;
 	m_DepthStencilBuffer = 0;
 	m_DepthStencilState = 0;
@@ -332,7 +332,6 @@ void DirectX11::BeginScene(float red, float green, float blue, float alpha)
 	color[3] = alpha;
 
 	m_DeviceContext->ClearRenderTargetView(m_RenderTargetView, color);
-
 	m_DeviceContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
 
