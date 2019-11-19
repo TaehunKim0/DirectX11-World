@@ -45,7 +45,6 @@ bool Graphics::Frame(float frameTime)
 	if (!result)
 		return false;
 
-
 	//Render
 	result = Render(frameTime);
 	if (!result)

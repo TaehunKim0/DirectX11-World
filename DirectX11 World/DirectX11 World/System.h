@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "Timer.h"
 #include "Graphics.h"
 
 class System
@@ -16,6 +16,7 @@ private:
 
 private:
 	Graphics* m_Graphics;
+	Timer* m_Timer;
 
 public:
 	System();

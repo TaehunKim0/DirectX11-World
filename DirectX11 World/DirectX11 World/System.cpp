@@ -44,6 +44,11 @@ void System::ShutDown()
 		m_Graphics->Shutdown();
 		SAFE_DELETE(m_Graphics);
 	}
+
+	if (m_Timer)
+	{
+		SAFE_DELETE(m_Timer);
+	}
 }
 
 void System::Generate()
@@ -119,6 +124,7 @@ bool System::Initialize()
 {
 	InitializeWindow();
 
+	//Graphics Init
 	m_Graphics = new Graphics();
 	if (!m_Graphics)
 		return false;
@@ -126,12 +132,22 @@ bool System::Initialize()
 	if (!(m_Graphics->Initialize(m_hInstance, m_Hwnd, m_Width, m_Height, m_Windowed)))
 		return false;
 
+	//Timer Init
+	m_Timer = new Timer();
+	if (!m_Timer)
+		return false;
+
+	if (!m_Timer->Initialize())
+		return false;
+
 	return true;
 }
 
 bool System::Frame()
 {
-	bool result = m_Graphics->Frame(0);
+	m_Timer->Frame();
+
+	bool result = m_Graphics->Frame(m_Timer->GetTime());
 	if (!result)
 		return false;
 
