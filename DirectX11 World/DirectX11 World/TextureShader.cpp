@@ -66,14 +66,12 @@ bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, const WCHA
 	D3D11_BUFFER_DESC matrixBufferDesc;
 	D3D11_SAMPLER_DESC samplerDesc;
 
-
 	errorMessage = 0;
 	vertexShaderBuffer = 0;
 	pixelShaderBuffer = 0;
-
+	
 	result = D3DCompileFromFile(vsFilename, NULL, NULL, "TextureVertexShader", "vs_5_0",
 		D3D10_SHADER_ENABLE_STRICTNESS, 0, &vertexShaderBuffer, &errorMessage);
-
 	if (FAILED(result))
 	{
 		if (errorMessage)
@@ -89,7 +87,6 @@ bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, const WCHA
 	}
 
 	result = D3DCompileFromFile(psFilename, NULL, NULL, "TexturePixelShader", "ps_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, &pixelShaderBuffer, &errorMessage);
-
 	if (FAILED(result))
 	{
 		if (errorMessage)

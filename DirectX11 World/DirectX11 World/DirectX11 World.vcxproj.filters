@@ -38,7 +38,18 @@
     <ClCompile Include="TextureShader.cpp">
       <Filter>EngineFrame\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Input.cpp">
+      <Filter>EngineFrame\System</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Movement.cpp">
+      <Filter>Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Game\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics.h">
@@ -80,7 +91,18 @@
     <ClInclude Include="TextureShader.h">
       <Filter>EngineFrame\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Input.h">
+      <Filter>EngineFrame\System</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Movement.h">
+      <Filter>Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Game\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -112,6 +134,9 @@
     </Filter>
     <Filter Include="EngineFrame\Shader\ShaderFile">
       <UniqueIdentifier>{329094a3-af3d-42f8-a7f5-9d29398a8d86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Player">
+      <UniqueIdentifier>{72e9af64-ecaa-4da3-b3d1-c423dc2271a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

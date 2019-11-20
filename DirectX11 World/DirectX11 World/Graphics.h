@@ -3,7 +3,7 @@
 #include "DirectX11.h"
 #include "Model.h"
 #include "TextureShader.h"
-#include "Camera.h"
+#include "PlayerController.h"
 
 const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
@@ -27,5 +27,6 @@ private:
 	DirectX11* m_D3D;
 	Model* model;
 	TextureShader* m_texShader;
-	Camera* m_Camera;
+	PlayerController* m_PlayerController;
+
 };

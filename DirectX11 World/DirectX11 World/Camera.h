@@ -17,8 +17,6 @@ public:
 	void GenerateBaseViewMatrix();
 	void GetBaseViewMatrix(XMMATRIX& viewMatrix);
 
-	void Translate(float x, float y, float z);
-
 private:
 	XMFLOAT3 m_position;
 	XMFLOAT3 m_rotation;

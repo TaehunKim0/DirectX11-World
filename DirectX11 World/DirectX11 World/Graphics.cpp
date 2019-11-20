@@ -1,6 +1,8 @@
 #include "PCH.h"
 #include "Graphics.h"
 
+
+
 Graphics::Graphics()
 {
 	m_D3D = nullptr;
@@ -34,9 +36,11 @@ bool Graphics::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidth, int s
 	if (!result)
 		return false;
 
-	m_Camera = new Camera();
-	m_Camera->SetPosition(0, 0, -10);
-	//m_Camera->SetRotation(30, 0, 0);
+	m_PlayerController = new PlayerController;
+
+	result = m_PlayerController->Initialize(hinstance, hwnd, screenWidth, screenHeight);
+	if (!result)
+		return false;
 
 	return true;
 }
@@ -65,8 +69,24 @@ bool Graphics::Frame(float frameTime)
 bool Graphics::Update(float frameTime)
 {
 	//Scene Update
-	m_Camera->Translate(0, 0.001, 0);
+	bool result;
 
+	m_PlayerController->Frame();
+
+	/*if (m_PlayerController->LightMovement)
+	{
+		result = HandleLightMovement(frameTime);
+		if (!result)
+		{
+			return false;
+		}
+	}*/
+
+	// If rotation trigger is enabled then increment the roation.
+	//if (m_PlayerController->Rotate)
+	//{
+	//	cubeRotation += 0.01f;
+	//}
 
 
 	return true;
@@ -76,16 +96,22 @@ bool Graphics::Render(float frameTime)
 {
 	XMMATRIX viewMatrix, worldMatrix , projectionMatrix;
 	bool result;
+	XMFLOAT3 pos;
 
-	m_Camera->Render();
-	m_Camera->GetViewMatrix(viewMatrix);
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 	m_D3D->GetWorldMatrix(worldMatrix);
 
-	m_D3D->BeginScene(1.0f, 1.0f, 0.0f, 1.0f);
+	m_D3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
+
+	m_PlayerController->GetCameraViewMatrix(viewMatrix);
+	m_PlayerController->GetPlayerPosition(pos);
+
+	//worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixScaling(-10.0f, 10.0f, 10.0f));
+	//worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixTranslation(pos.x, pos.y, pos.z));
 
 	model->Render(frameTime);
-	m_texShader->Render(m_D3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix, model->GetTexture()->GetTextureView());
+	m_texShader->Render(m_D3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix, viewMatrix,
+		projectionMatrix, model->GetTexture()->GetTextureView());
 
 	m_D3D->EndScene();
 
