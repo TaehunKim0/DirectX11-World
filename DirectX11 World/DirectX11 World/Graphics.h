@@ -18,6 +18,7 @@ public:
 	bool Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidth, int screenHeight , bool windowed);
 	void Shutdown();
 	bool Frame(float frameTime);
+	bool LoadModel();
 
 private:
 	bool Render(float frameTime);
@@ -25,7 +26,8 @@ private:
 
 private:
 	DirectX11* m_D3D;
-	Model* model;
+	Model* m_Cube;
+	Model* m_Ground;
 	TextureShader* m_texShader;
 	PlayerController* m_PlayerController;
 

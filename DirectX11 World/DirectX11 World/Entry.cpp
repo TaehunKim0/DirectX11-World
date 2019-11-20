@@ -7,7 +7,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstanc, LPSTR CmdParam
 	bool result;
 
 	m_System = new System();
-	if (m_System->Create(800, 600, 1))
+	if (m_System->Create(1280, 960, 1))
 		m_System->Generate();
 
 	m_System->ShutDown();

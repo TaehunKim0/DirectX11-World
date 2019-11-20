@@ -214,8 +214,7 @@ bool System::InitializeWindow()
 	SetForegroundWindow(m_Hwnd);
 	SetFocus(m_Hwnd);
 
-	ShowCursor(true);
-
+	ShowCursor(false);
 
 	return true;
 }

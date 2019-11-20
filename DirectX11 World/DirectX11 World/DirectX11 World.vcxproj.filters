@@ -26,9 +26,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>EngineFrame\Object</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMain.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>EngineFrame\Models</Filter>
     </ClCompile>
@@ -49,6 +46,12 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGround.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMain.cpp">
+      <Filter>Game\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,9 +82,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>EngineFrame\Object</Filter>
     </ClInclude>
-    <ClInclude Include="SceneMain.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>EngineFrame\Models</Filter>
     </ClInclude>
@@ -102,6 +102,12 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGround.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMain.h">
+      <Filter>Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +143,9 @@
     </Filter>
     <Filter Include="Game\Player">
       <UniqueIdentifier>{72e9af64-ecaa-4da3-b3d1-c423dc2271a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
+      <UniqueIdentifier>{ca74fc73-ca4b-42f5-a21f-7449d9fc79c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

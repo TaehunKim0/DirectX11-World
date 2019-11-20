@@ -26,11 +26,6 @@ bool Graphics::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidth, int s
 		return false;
 	}
 
-	model = new Model();
-	result = model->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), L"data/cube.txt", L"data/stone01.tga");
-	if (!result)
-		return false;
-
 	m_texShader = new TextureShader();
 	result = m_texShader->Initialize(m_D3D->GetDevice(), hwnd);
 	if (!result)
@@ -41,6 +36,8 @@ bool Graphics::Initialize(HINSTANCE hinstance, HWND hwnd, int screenWidth, int s
 	result = m_PlayerController->Initialize(hinstance, hwnd, screenWidth, screenHeight);
 	if (!result)
 		return false;
+
+	LoadModel();
 
 	return true;
 }
@@ -64,6 +61,24 @@ bool Graphics::Frame(float frameTime)
 		return false;
 
 	return true;
+}
+
+bool Graphics::LoadModel()
+{
+	bool result;
+
+	m_Cube = new Model();
+	result = m_Cube->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), L"data/cube.txt", L"data/stone01.tga");
+	if (!result)
+		return false;
+
+	m_Ground = new Model();
+	result = m_Ground->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), L"data/cube.txt", L"data/grass2.tga");
+	if (!result)
+		return false;
+
+	m_Ground->SetPosition(0.0f, -1.5f, 0.0f);
+
 }
 
 bool Graphics::Update(float frameTime)
@@ -109,9 +124,17 @@ bool Graphics::Render(float frameTime)
 	//worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixScaling(-10.0f, 10.0f, 10.0f));
 	//worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixTranslation(pos.x, pos.y, pos.z));
 
-	model->Render(frameTime);
-	m_texShader->Render(m_D3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix, viewMatrix,
-		projectionMatrix, model->GetTexture()->GetTextureView());
+	m_Cube->Render(frameTime);
+	m_texShader->Render(m_D3D->GetDeviceContext(), m_Cube->GetIndexCount(), worldMatrix, viewMatrix,
+		projectionMatrix, m_Cube->GetTexture()->GetTextureView());
+
+	m_Ground->GetPosition(pos);
+	worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixScaling(5.0f, 0.2f, 5.0f));
+	worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixTranslation(pos.x, pos.y, pos.z));
+
+	m_Ground->Render(frameTime);
+	m_texShader->Render(m_D3D->GetDeviceContext(), m_Ground->GetIndexCount(), worldMatrix, viewMatrix,
+		projectionMatrix, m_Ground->GetTexture()->GetTextureView());
 
 	m_D3D->EndScene();
 

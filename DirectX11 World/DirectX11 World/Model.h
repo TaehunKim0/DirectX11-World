@@ -65,8 +65,16 @@ private:
 
 	ModelType* m_Model;
 	Texture* m_Texture;
+	XMFLOAT3 m_Position;
 
 public:
+	void GetPosition(XMFLOAT3& pos) {
+		pos = m_Position;
+	}
+	void SetPosition(float x, float y , float z) {
+		m_Position = XMFLOAT3(x, y, z);
+	}
+
 	UINT GetIndexCount() {
 		return m_IndexCount;
 	}
