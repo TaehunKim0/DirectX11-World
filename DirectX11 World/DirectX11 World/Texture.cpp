@@ -70,6 +70,22 @@ bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContex
 	return true;
 }
 
+
+bool Texture::DDSInitialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* fileName)
+{
+	HRESULT result;
+
+	// Load the texture in.
+	result = CreateDDSTextureFromFile(device, fileName, NULL, &m_TextureView, NULL);
+
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	return true;
+}
+
 bool Texture::LoadTarga(const WCHAR* fileName, int& height, int& width)
 {
 	//32 bit targa 파일만 가능한 코드

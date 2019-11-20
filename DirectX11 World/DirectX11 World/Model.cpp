@@ -31,6 +31,28 @@ bool Model::Initialize(ID3D11Device* device,ID3D11DeviceContext* deviceContext, 
 	return true;
 }
 
+bool Model::DDSInitialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* modelFileName, const WCHAR* textureFileName)
+{
+	bool result;
+
+	m_D3DDevice = device;
+	m_D3DDeviceContext = deviceContext;
+
+	result = LoadModel(modelFileName);
+	if (!result)
+		return false;
+
+	result = InitializeBuffers();
+	if (!result)
+		return false;
+
+	result = LoadTextureDDS(textureFileName);
+	if (!result)
+		return false;
+
+	return true;
+}
+
 void Model::Update(float frameTime)
 {
 }
@@ -201,6 +223,25 @@ bool Model::LoadTexture(const WCHAR* textureFileName)
 	}
 
 	result = m_Texture->Initialize(m_D3DDevice, m_D3DDeviceContext, textureFileName);
+	if (!result)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool Model::LoadTextureDDS(const WCHAR* textureFileName)
+{
+	bool result;
+
+	m_Texture = new Texture;
+	if (!m_Texture)
+	{
+		return false;
+	}
+
+	result = m_Texture->DDSInitialize(m_D3DDevice, m_D3DDeviceContext, textureFileName);
 	if (!result)
 	{
 		return false;

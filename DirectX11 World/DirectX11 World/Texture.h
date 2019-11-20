@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DDSTextureLoader.h"
 class Texture
 {
 	struct TargaHeader
@@ -16,6 +17,7 @@ public:
 	~Texture();
 
 	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* fileName);
+	bool DDSInitialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* fileName);
 	void Shutdown();
 
 	ID3D11ShaderResourceView* GetTextureView();

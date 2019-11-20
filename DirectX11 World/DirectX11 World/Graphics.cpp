@@ -79,6 +79,10 @@ bool Graphics::LoadModel()
 
 	m_Ground->SetPosition(0.0f, -1.5f, 0.0f);
 
+	m_SkyBox = new Model();
+	result = m_SkyBox->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), L"data/Sphere.txt", L"data/Skybox.tga");
+	if (!result)
+		return false;
 }
 
 bool Graphics::Update(float frameTime)
@@ -109,25 +113,26 @@ bool Graphics::Update(float frameTime)
 
 bool Graphics::Render(float frameTime)
 {
-	XMMATRIX viewMatrix, worldMatrix , projectionMatrix;
+	XMMATRIX viewMatrix, worldMatrix , projectionMatrix, OrginWorldMatrix;
 	bool result;
 	XMFLOAT3 pos;
 
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 	m_D3D->GetWorldMatrix(worldMatrix);
+	m_D3D->GetWorldMatrix(OrginWorldMatrix);
 
 	m_D3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
 
 	m_PlayerController->GetCameraViewMatrix(viewMatrix);
 	m_PlayerController->GetPlayerPosition(pos);
 
-	//worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixScaling(-10.0f, 10.0f, 10.0f));
-	//worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixTranslation(pos.x, pos.y, pos.z));
 
+	/*Cube Render*/
 	m_Cube->Render(frameTime);
 	m_texShader->Render(m_D3D->GetDeviceContext(), m_Cube->GetIndexCount(), worldMatrix, viewMatrix,
 		projectionMatrix, m_Cube->GetTexture()->GetTextureView());
 
+	/*Ground Render*/
 	m_Ground->GetPosition(pos);
 	worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixScaling(5.0f, 0.2f, 5.0f));
 	worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixTranslation(pos.x, pos.y, pos.z));
@@ -135,6 +140,17 @@ bool Graphics::Render(float frameTime)
 	m_Ground->Render(frameTime);
 	m_texShader->Render(m_D3D->GetDeviceContext(), m_Ground->GetIndexCount(), worldMatrix, viewMatrix,
 		projectionMatrix, m_Ground->GetTexture()->GetTextureView());
+
+	/*SkyBox Render*/
+	m_PlayerController->GetPlayerPosition(pos);
+
+	worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixScaling(-10.0f, -100.0f, -10.0f));
+	worldMatrix = XMMatrixMultiply(worldMatrix, XMMatrixTranslation(pos.x, pos.y, pos.z));
+
+	m_SkyBox->Render(frameTime);
+	m_texShader->Render(m_D3D->GetDeviceContext(), m_SkyBox->GetIndexCount(), worldMatrix, viewMatrix,
+		projectionMatrix, m_SkyBox->GetTexture()->GetTextureView());
+
 
 	m_D3D->EndScene();
 

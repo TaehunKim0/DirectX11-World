@@ -26,9 +26,10 @@ private:
 
 private:
 	DirectX11* m_D3D;
+	PlayerController* m_PlayerController;
+	TextureShader* m_texShader;
+
 	Model* m_Cube;
 	Model* m_Ground;
-	TextureShader* m_texShader;
-	PlayerController* m_PlayerController;
-
+	Model* m_SkyBox;
 };

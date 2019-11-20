@@ -32,6 +32,7 @@ public:
 
 public:
 	virtual bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* modelFileName, const WCHAR* textureFileName);
+	virtual bool DDSInitialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* modelFileName, const WCHAR* textureFileName);
 	virtual void Update(float frameTime);
 	virtual void Render(float frameTime);
 
@@ -46,6 +47,7 @@ private:
 	void ReleaseModel();
 
 	bool LoadTexture(const WCHAR* textureFileName);
+	bool LoadTextureDDS(const WCHAR* textureFileName);
 	void ReleaseTexture();
 
 	void RenderBuffers(float frameTime);
